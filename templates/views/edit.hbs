@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Edit Student</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <p>Edit a Student</p>
+        <div id="form">
+                <label>Student Reg no:</label><br><br>
+                <input id="studentId" type="text" placeholder=" Enter Student Reg no."/><br><br>
+                <label>Student Name:</label><br/><br/>
+                <input id="name" type="text" placeholder=" Enter the Student name"/><br/><br/>
+                <label>Student Age :</label><br/><br/>
+                <input id="age" type="text" placeholder=" Enter the Student age"/><br/><br/>
+                <label>Standard:</label><br/><br/>                
+                <select id="std" type="text" placeholder=" Select the Student standard">
+                    <option value="LKG">LKG</option>
+                    <option value="UKG">UKG</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VI">VII</option>
+                    <option value="VII">VIII</option>
+                    <option value="IX">IX</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select><br/><br/>
+                <button id="btn"onclick="show()">Update</button>
+                <h2 id="text" style="color:rgb(0, 0, 0);"></h2>                       
+        </div>  
+    
+    </div>
+
+
+    <script> 
+            function show() { 
+                
+                
+                var id=document.getElementById("studentId").value;
+                var name =document.getElementById("name").value; 
+                var age =document.getElementById("age").value; 
+                var std =document.getElementById("std").value; 
+                var data={"id":id,
+                "name":name,
+                "age":age,
+                "std":std
+                }                
+                document.getElementById("text").innerHTML="Please Wait a Sec..";
+                fetch("/editstudent",{ 
+                    method: "POST", 
+                    body: JSON.stringify(data), 
+                    headers: { 
+                        "Content-type": "application/json; charset=UTF-8"
+                    } 
+                }) 
+                .then(response => response.json()) 
+                .then(json => {console.log(json),document.getElementById("text").innerHTML='Student data updated!'});
+                                
+                 } 
+
+  </script>
+
+    
+    
+    {{>footer}}
+</body>
+
+</html>

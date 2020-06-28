@@ -1,0 +1,151 @@
+body {
+    color:black;
+    font-family: arial;
+    padding: 0 16px;    
+    background-color: aqua;
+    background-image: url('../img/bg2.jpg');
+    font-family: "Comic Sans MS", cursive, serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: fit-content;
+}
+
+.main-content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-content #font{
+    text-align: center;
+}
+
+header {
+    text-align: center;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+}
+
+header a {
+    color: #888888;
+    margin-right: 4px;
+    text-decoration: none;
+}
+header{
+    border-bottom: 6px soild black;
+
+}
+.portrait {
+    width: 250px;
+}
+#form{
+    border: 5px solid white;
+    padding: 10px 10px;
+    border-radius: 20px;
+    width: 50%;
+    margin: auto;
+   background-color: antiquewhite; 
+   
+    
+}
+label{
+    font-weight: bold ;
+    margin-left: 30px;
+
+}
+input{
+    padding: 10px;
+    width: 550px;
+    height: 15px;
+    margin-left: 20px;
+    font-size:15px;
+    color:black;
+    border-radius: 6px;
+    
+}input:hover{
+    border-color: white;
+    background-color:whitesmoke;
+}
+
+button{
+    width: 180px;
+    height: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+button:hover{
+    background-color: lightblue;
+    
+}
+#btn{
+        width: 130px;
+        height: 40px;
+        margin-left: 20px;
+        cursor: pointer;
+        border-radius: 6px;
+        background-color: rgb(136, 218, 136);
+}
+#font{
+    color:rgb(36, 36, 184);
+    font-style: italic;
+    margin-top: 150px;
+    margin-left: 30px;
+    font-size: 40px;
+}
+
+
+
+#heading{
+    text-align: center;
+}
+
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #table tr:nth-child(even){background-color: #f2f2f2;}
+  #table tr:nth-child(odd){color:  #011a0b; background-color: bisque;}
+  
+  #table tr:hover {background-color: #ddd;}
+  
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  header button{
+      background-color: #15c1c7;
+      color: blanchedalmond;
+      font-weight: bolder;
+  }
+
+select{
+    padding: 10px;
+    width: 580px;
+    height: 40px;
+    margin-left: 20px;    
+    font-size:15px;
+    color:black;
+    border-radius: 6px;   
+}
+option{
+    width: 580px;
+    height: 200px;   
+    font-size:15px;
+    color:black;    
+}

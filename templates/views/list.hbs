@@ -1,0 +1,140 @@
+
+<html >
+
+<head>
+    <title> Student List </title>
+
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        table,tr,td{
+            border: 2px solid black;
+        }
+
+      
+    </style>
+
+</head>
+
+<body onload="fetchData()">
+    <div class="main-content" id="main-content">
+        {{>header}}
+        <div id="heading">
+        <p> Student List</p>
+        <input type="text" id="deleteinput" style="width:200px;height:50px" placeholder="Enter student Id">
+        <button onclick="deletestudent()" style="display: inline;">Delete Student</button>
+        </div>
+        <br><br>
+    </div>
+
+    <table id="table">
+
+    </table>
+
+    
+    
+    
+
+    <script>
+
+
+        fetchData=async ()=>{
+            
+            var response = await fetch("/liststudent");
+            var body = await response.json(); 
+            var listOfProducts=body.data
+          
+            //var listOfProducts=JSON.parse(sessionStorage.getItem("listOfProducts"));
+            console.log(listOfProducts)
+            var flag=0;
+            var row=1;
+            var table=document.getElementById("table");
+            while (table.hasChildNodes()) {
+                    table.removeChild(table.firstChild);
+                }
+                var tr1=document.createElement('tr')
+            
+                
+                var th1=document.createElement('th')
+                th1.innerHTML="Sl.No."
+                var th2=document.createElement('th')
+                th2.innerHTML="Student Name"
+                var th3=document.createElement('th')
+                th3.innerHTML="Registration Id"
+                var th4=document.createElement('th')
+                th4.innerHTML="Age"
+                var th5=document.createElement('th')
+                th5.innerHTML="Std"
+                tr1.appendChild(th1)
+                tr1.appendChild(th2)
+                tr1.appendChild(th3)
+                tr1.appendChild(th4)
+                tr1.appendChild(th5)
+                table.appendChild(tr1)
+            
+            for (var i = 0; i < listOfProducts.length; i++){
+                //if(flag==0)
+                var tr=document.createElement('tr')
+                var td=document.createElement('td')
+                td.innerHTML=i+1
+                tr.appendChild(td)
+                var name = document.createElement("td")
+                name.innerHTML=listOfProducts[i].name
+                name.className="name"
+                var age = document.createElement("td")
+                age.innerHTML=listOfProducts[i].age
+                age.className="age"
+                var std = document.createElement("td")
+                std.innerHTML=listOfProducts[i].std
+                std.className="std"
+                var id = document.createElement("td")
+                id.innerHTML=listOfProducts[i]._id
+                id.className="itemId"
+                
+                tr.appendChild(name)
+                tr.appendChild(id)
+                tr.appendChild(age)
+                tr.appendChild(std)
+                tr.id=listOfProducts[i]._id
+                
+                table.appendChild(tr)
+               /* if(flag==2)
+                    table.appendChild(tr)   
+                flag=(flag+1)%3  */        
+                
+            }
+            //if(flag!=0)
+            //table.appendChild(tr)
+        }
+  
+         function deletestudent(){
+            var data=document.getElementById('deleteinput').value;
+            console.log('delete')
+            console.log(typeof data)
+
+            
+
+          fetch("/deletestudent",{ 
+                    method: "POST", 
+                    body:  JSON.stringify({data}),
+                    headers: { 
+                        "Content-Type": "application/json"
+                    }                    
+                }) 
+                .then(response => response.json()) 
+                .then(json => console.log(json));  
+
+                fetchData()                           
+            } 
+            
+             
+        
+        
+       
+    </script>
+</body>
+
+{{>footer}}
+
+</html>
